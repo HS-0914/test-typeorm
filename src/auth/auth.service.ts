@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { UserDTO } from './dto/user.dto';
 import * as bcrypt from 'bcrypt';
 import { Payload } from './security/payload.interface';
-import { User } from './entity/user.entity';
+import { User } from '../domain/user.entity';
 import { JwtService } from '@nestjs/jwt';
 
 

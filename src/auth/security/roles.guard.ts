@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import { Observable } from "rxjs";
-import { User } from "../entity/user.entity";
+import { User } from "../../domain/user.entity";
 
 //CanActivate -> 사용가능하는 여부를 묻는것
 @Injectable()
