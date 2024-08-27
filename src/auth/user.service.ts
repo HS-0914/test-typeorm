@@ -13,7 +13,7 @@ export class UserService {
     ){}
     
     // options의 내용을 가지고 검색
-    async findByFields(options: FindOneOptions<UserDTO>): Promise<UserDTO | undefined> {
+    async findByFields(options: FindOneOptions<UserDTO>): Promise<User | undefined> {
         return await this.userRepository.findOne(options);
     }
 

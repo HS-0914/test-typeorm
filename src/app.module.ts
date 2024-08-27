@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Cat } from './cats/entity/cats.entity';
 import { User } from './auth/entity/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { UserAuthority } from './auth/entity/user-authority.entity';
 
 @Module({
   imports: [
@@ -16,8 +17,9 @@ import { AuthModule } from './auth/auth.module';
       username: 'root',
       password: 'root',
       database: 'test',
-      entities: [Cat, User],
-      synchronize: true, // 개발할때만 true, 운영할때는 X
+      entities: [Cat, User, UserAuthority],
+      synchronize: false, // 개발할때만 true, 운영할때는 X
+      logging: true, //로그에 쿼리문이 보이게 하는 Option
     }),
     CatsModule,
     AuthModule
