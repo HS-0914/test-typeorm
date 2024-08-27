@@ -24,7 +24,12 @@ export class AuthController {
     async login(@Body() userDTO: UserDTO, @Res() res: Response): Promise<any> {
         const jwt = await this.authService.validateUser(userDTO);
         res.setHeader('Authorization', 'Bearer ' + jwt.accessToken);
-        return res.json(jwt);
+        //res.cookie(key, value, options);
+        res.cookie('jwt', jwt.accessToken, {
+            httpOnly: true, // 쿠키를 브라우저에서 사용할 수 없음
+            maxAge: 24 * 60 * 60 * 1000, // 24시간 * 60분 * 60초 * 1000(1000ms)
+        })
+        return res.send({ message: 'success' });
     }
 
     @Get('/authenticate')
@@ -40,5 +45,21 @@ export class AuthController {
     adminRoleCheck(@Req() req: Request): any {
         const user: any = req.user;
         return user;
+    }
+
+    @Get('/cookies')
+    getCookies(@Req() req: Request, @Res() res: Response): any {
+        const jwt = req.cookies['jwt'];
+        return res.send(jwt);
+    }
+
+    @Post('/logout')
+    logout(@Res() res: Response): any {
+        res.cookie('jwt', '', {
+            maxAge: 0
+        });
+        return res.send({
+            message: 'success'
+        });
     }
 }
