@@ -22,12 +22,11 @@ function ormConfig(): TypeOrmModuleOptions{
         synchronize: commonConf.SYNCRONIZE,
         // entities: [Cat, User, UserAuthority],
         // synchronize: false, // 개발할때만 true, 운영할때는 X
-        logging: true, //로그에 쿼리문이 보이게 하는 Option
+        logging: false, //로그에 쿼리문이 보이게 하는 Option
         migrations: commonConf.MIGRATIONS,
         // cli: commonConf.CLI,
         migrationsRun: commonConf.MIGRAIONS_RUN
     }
-    console.log(ormconfig.entities);
     return ormconfig;
 }
 
