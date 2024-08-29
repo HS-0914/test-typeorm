@@ -58,7 +58,3 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 /test
 .eslintrc.js
 .prettierrc
-nest-cli.json
-package-lock.json
-tsconfig.build.json
-tsconfig.json
